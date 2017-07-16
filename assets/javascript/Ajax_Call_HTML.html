@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Sample</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Hello Class!</h1>
+
+<script type="text/javascript">
+
+	var movieName = "Exorcist";
+	var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&apikey=40e9cece";
+
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(cow) {
+		console.log(cow);
+		console.log(cow.Title);
+	});
+
+</script>
+
+
+<script src="app.js"></script>
+</body>
+</html>

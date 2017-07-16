@@ -1,0 +1,101 @@
+body {
+	background-color: black;
+	max-height: 400px;
+}
+
+header {
+	min-height: 1.5em;
+	font-family: "Press Start 2P", sans-serif;
+	padding: 1.5em;
+	opacity: 50%;	
+	z-index: 1;
+}
+
+a:hover {
+	color: #87ABB3;
+}
+
+#logo {
+	float: left;
+	color: white;
+	font-size: 1.5em;
+}
+
+#logo a {
+	text-decoration: none;
+	color: white;
+} 
+
+#logo a:hover {
+	color: #87ABB3;
+}
+
+ul {
+	
+	right: -20em;
+	list-style-type: none;
+}
+
+li a {
+	text-decoration: none;
+	float: right;
+	color: white;
+	padding: 0 2em;
+}
+
+#title-screen {
+	font-family: "Press Start 2P", cursive; sans-serif;
+	color: white;
+	line-height: 300%;
+	margin: 10% 20%;
+	max-width: 40%;
+	text-align: center;
+}
+
+#title-screen:hover {
+	color: #87ABB3;
+}
+
+#title-screen h1 {
+	font-size: 2.5em;
+}
+
+#title-screen h3 {
+	font-size: 1.2em;
+}
+
+#intro-screen {
+	display: none;
+}
+
+.content-screen {
+	font-family: "Press Start 2P", cursive; sans-serif;
+	color: white;
+	line-height: 300%;
+	text-align: left;
+	margin: 0 5%;
+}
+
+.content-screen img {
+	float: left;
+	max-width: 50%;
+	right-margin: 2em;
+}
+
+#intro-text, #questionsThree, .continue-text {
+	position: relative;
+	left: 2em;
+	top: 0.5em;
+}
+
+.continue-text:hover {
+	color: #87ABB3;
+}
+
+#stop-screen {
+	display: none;
+}
+
+#name-screen {
+	display: none;
+}
