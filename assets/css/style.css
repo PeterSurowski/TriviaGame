@@ -82,7 +82,7 @@ li a {
 	right-margin: 2em;
 }
 
-#intro-text, #questionsThree, .continue-text {
+.text-box {
 	position: relative;
 	left: 2em;
 	top: 0.5em;
@@ -97,5 +97,17 @@ li a {
 }
 
 #name-screen {
+	display: none;
+}
+
+#lancelot-screen {
+	display: none;
+}
+
+#lancelot:hover {
+	color: #87ABB3;	
+}
+
+#timer {
 	display: none;
 }
