@@ -56,7 +56,7 @@ li a {
 	color: #87ABB3;
 }
 
-#title-screen h1 {
+#title-screen h1, #game-over-text {
 	font-size: 2.5em;
 }
 

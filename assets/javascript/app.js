@@ -21,6 +21,7 @@ var questD = "To seek the Holy Grail!"
 var namesClicked = 0;
 var noNameClicked = "You don't even know your own name? I blow my nose at you!"
 var gameOverText = "GAME OVER"
+var myTimeout;
 
 //Declare a function that will trigger the click sound.
 function clickSound() {
@@ -33,7 +34,7 @@ function clickSound() {
 }
 
 // Declare a function that will slowly type out copy.
-function showText (target, message, index, interval) {
+function showText(target, message, index, interval) {
 	if (index < message.length) {
 		$(target).append(message[index++]);
 		setTimeout(function() {
@@ -44,10 +45,11 @@ function showText (target, message, index, interval) {
 }
 
 // Declare a timer function.
-function timer (target, i, interval) {
+function timer(target, i, interval) {
+	clearTimeout(myTimeout);
 	if (i > -1) {
 		$(target).text(i--);
-		setTimeout(function() {
+		myTimeout = setTimeout(function() {
 			timer(target, i, interval);
 			console.log(i);
 		}, interval);
@@ -55,6 +57,7 @@ function timer (target, i, interval) {
 		// Hide name-screen, continue-text and timer, show the death screen.
 		$('#name-screen').hide();
 		$('#timer').hide();
+		$('#lancelot-screen').hide();
 		$('#death-screen').show();
 		//Emplty out the yaaa and continue-text-death(or else every time the timer runs out, it will add more text to the elements.)
 		$('#yaaa').text('');
@@ -71,6 +74,8 @@ function timer (target, i, interval) {
 		}, 3)
 	}
 }
+
+
 
 // When title-screen is clicked...
 $('#title-screen').click(function() {
@@ -148,15 +153,19 @@ $('#continue-text-two').click(function() {
 	setTimeout(function() {
 		$('#timer').show();
 		//And call the timer function...
-		timer ('#timer', 10, 1000);
+		myTimer = timer('#timer', 10, 1000);
+		myTimer;
 	}, 9)
 });
 
 //If continue-text-death is clicked...
 $('#continue-text-death').click(function() {
 	if (namesClicked === 0) {
+		//Hide the knights' screens and the death screen...
 		$('#death-screen').hide();
+		$('#lancelot-screen').hide();
 		$('#game-over-screen').show();
+		//If user never clicked a name they get a special message and game-over-text.
 		$(function() {
 			showText('#no-name-clicked', noNameClicked, 0, 5);
 		})
@@ -173,13 +182,17 @@ $('#continue-text-death').click(function() {
 		$('#game-over-screen').show();
 		//Otherwise, just go back to the name screen.
 	} else {
-		$('#name-screen').show();
+		//Hide the knights' screens and the death screen.
 		$('#death-screen').hide();
+		$('#lancelot-screen').hide();
+		$('#name-screen').show();		
 		//But reset the timer (otherwise, it has already run and won't appear.)
-		$('#timer').show();
-		setTimeout(function() {
-			timer('#timer', 10, 1000);
-		}, 2);
+		//This may have been a bad idea...
+		//$('#timer').show();
+		//setTimeout(function() {
+			//timer('#timer', 10, 1000);
+		//}, 2);
+		
 	}
 });
 
@@ -188,13 +201,15 @@ $('#lancelot').click(function() {
 	//Change value of lancelotClicked to true.
 	lancelotClicked = true;
 	namesClicked++;
+	window.clearTimeout();
 	//Turns the click functionality off for #lancelot...
 	$('#lancelot').off('click');
 	//And makes his name gray...
-	$('#lancelot').css('color', 'gray');
-	//Hide name-screen and death-screen...
+	$('#lancelot').css("color", "gray");
+	//Hide name-screen, death-screen and timer...
 	$('#name-screen').hide();
 	$('#death-screen').hide();
+	$('#timer').hide();
 	//Show the lancelot-quest screen
 	$('#lancelot-screen').show();
 	//Print the whatQuest var to the what-quest element.
@@ -221,5 +236,10 @@ $('#lancelot').click(function() {
 			showText('#quest-d', questD, 0, 5)
 		})
 	}, 2);
+	//Start the timer.
+	setTimeout(function() {
+		$('#timer').show();
+		timer('#timer', 10, 1000);
+	}, 3)
 	
 })
