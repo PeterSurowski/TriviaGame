@@ -183,7 +183,7 @@ $('#continue-text-death').click(function() {
 	} else {
 		//Hide the knights' screens and the death screen.
 		$('#death-screen').hide();
-		$('#lancelot-screen').hide();
+		$('#lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
 		$('#name-screen').show();
 		$('#name-timer').show();
 		myTimer = timer('#name-timer', 10, 1000);
@@ -212,22 +212,22 @@ $('#lancelot').click(function() {
 	});
 	setTimeout(function() {
 		$(function () {
-			showText('#quest-a', questA, 0, 5)
+			showText('#lancelot-quest-a', questA, 0, 5)
 		})
 	}, 2);
 	setTimeout(function() {
 		$(function() {
-			showText('#quest-b', questB, 0, 5)
+			showText('#lancelot-quest-b', questB, 0, 5)
 		})
 	}, 2);
 	setTimeout(function() {
 		$(function() {
-			showText('#quest-c', questC, 0, 5)
+			showText('#lancelot-quest-c', questC, 0, 5)
 		})
 	}, 2);
 	setTimeout(function() {
 		$(function() {
-			showText('#quest-d', questD, 0, 5)
+			showText('#lancelot-quest-d', questD, 0, 5)
 		})
 	}, 2);
 	//Start the timer.	
@@ -235,5 +235,75 @@ $('#lancelot').click(function() {
 		$('#lancelot-timer').show();
 		myTimer = timer('#lancelot-timer', 10, 1000);
 		myTimer;
+	}, 3);
+});
+
+//If you click robin...
+$('#robin').click(function() {
+	//Change value of lancelotClicked to true.
+	robinClicked = true;
+	namesClicked++;
+	//Turns the click functionality off for #lancelot...
+	$('#robin').off('click');
+	//And makes his name gray...
+	$('#robin').css("color", "gray");
+	//Hide name-screen, death-screen and timer...
+	$('#name-screen').hide();
+	$('#death-screen').hide();
+	$('#name-timer').hide();
+	//Show the lancelot-quest screen
+	$('#robin-screen').show();
+	//Print the whatQuest var to the what-quest element.
+	$(function () {
+		showText('#what-quest', whatQuest, 0, 5);
+	});
+	setTimeout(function() {
+		$(function () {
+			showText('#robin-quest-a', questA, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#robin-quest-b', questB, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#robin-quest-c', questC, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#robin-quest-d', questD, 0, 5)
+		})
+	}, 2);
+	//Start the timer.	
+	setTimeout(function() {
+		$('#robin-timer').show();
+		myTimer = timer('#robin-timer', 10, 1000);
+		myTimer;
 	}, 3)
 })
+
+//Death if you click quest a, b, or c.
+$('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #robin-quest-b, #robin-quest-c, #galahad-quest-a, #galahad-quest-b, #galahad-quest-c, #arthur-quest-a, #arthur-quest-b, #arthur-quest-c').click(function() {
+	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
+	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer').hide();
+	$('#death-screen').show();
+	//Stop timer
+	clearTimeout(myTimeout);
+	//Empty out the yaaa and continue-text-death(or else every time the timer runs out, it will add more text to the elements.)
+	$('#yaaa').text('');
+	$('#continue-text-death').text('');
+	// Print out yaaa into the #yaaa element.
+	$(function() {
+		showText('#yaaa', yaaa, 0, 5);
+	});
+	// Wait three seconds, then show continue-text
+	setTimeout(function() {
+		$(function () {
+			showText('#continue-text-death', continueText, 0, 5)
+		});
+	}, 3);
+});
+

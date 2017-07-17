@@ -104,19 +104,19 @@ li a {
 	display: none;
 }
 
-#lancelot {
-
-}
-
 #lancelot-screen {
 	display: none;
 }
 
-#lancelot:hover {
+#lancelot:hover, #robin:hover {
 	color: #87ABB3;	
 }
 
-#name-timer, #lancelot-timer {
+#robin-screen {
+	display: none;
+}
+
+#name-timer, #lancelot-timer, #robin-timer {
 	display: none;
 	position: relative;
 	left: 4em;
