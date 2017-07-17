@@ -56,7 +56,8 @@ function timer(target, i, interval) {
 	} else {
 		// Hide name-screen, continue-text and timer, show the death screen.
 		$('#name-screen').hide();
-		$('#timer').hide();
+		$('#name-timer').hide();
+		$('#lancelot-timer').hide();
 		$('#lancelot-screen').hide();
 		$('#death-screen').show();
 		//Emplty out the yaaa and continue-text-death(or else every time the timer runs out, it will add more text to the elements.)
@@ -74,8 +75,6 @@ function timer(target, i, interval) {
 		}, 3)
 	}
 }
-
-
 
 // When title-screen is clicked...
 $('#title-screen').click(function() {
@@ -151,9 +150,9 @@ $('#continue-text-two').click(function() {
 	}, 6)
 	//Wait nine seconds, then show the timer...
 	setTimeout(function() {
-		$('#timer').show();
+		$('#name-timer').show();
 		//And call the timer function...
-		myTimer = timer('#timer', 10, 1000);
+		myTimer = timer('#name-timer', 10, 1000);
 		myTimer;
 	}, 9)
 });
@@ -185,14 +184,10 @@ $('#continue-text-death').click(function() {
 		//Hide the knights' screens and the death screen.
 		$('#death-screen').hide();
 		$('#lancelot-screen').hide();
-		$('#name-screen').show();		
-		//But reset the timer (otherwise, it has already run and won't appear.)
-		//This may have been a bad idea...
-		//$('#timer').show();
-		//setTimeout(function() {
-			//timer('#timer', 10, 1000);
-		//}, 2);
-		
+		$('#name-screen').show();
+		$('#name-timer').show();
+		myTimer = timer('#name-timer', 10, 1000);
+		myTimer;
 	}
 });
 
@@ -201,7 +196,6 @@ $('#lancelot').click(function() {
 	//Change value of lancelotClicked to true.
 	lancelotClicked = true;
 	namesClicked++;
-	window.clearTimeout();
 	//Turns the click functionality off for #lancelot...
 	$('#lancelot').off('click');
 	//And makes his name gray...
@@ -209,7 +203,7 @@ $('#lancelot').click(function() {
 	//Hide name-screen, death-screen and timer...
 	$('#name-screen').hide();
 	$('#death-screen').hide();
-	$('#timer').hide();
+	$('#name-timer').hide();
 	//Show the lancelot-quest screen
 	$('#lancelot-screen').show();
 	//Print the whatQuest var to the what-quest element.
@@ -236,10 +230,10 @@ $('#lancelot').click(function() {
 			showText('#quest-d', questD, 0, 5)
 		})
 	}, 2);
-	//Start the timer.
+	//Start the timer.	
 	setTimeout(function() {
-		$('#timer').show();
-		timer('#timer', 10, 1000);
+		$('#lancelot-timer').show();
+		myTimer = timer('#lancelot-timer', 10, 1000);
+		myTimer;
 	}, 3)
-	
 })

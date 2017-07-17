@@ -116,12 +116,14 @@ li a {
 	color: #87ABB3;	
 }
 
-#timer {
+#name-timer, #lancelot-timer {
 	display: none;
 	position: relative;
 	left: 4em;
 	top: 0.5em;
 	font-size: 2em;
+	color: white;
+	font-family: "Press Start 2P", cursive; sans-serif;
 }
 
 #death-screen {
