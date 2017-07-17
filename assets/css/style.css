@@ -43,7 +43,7 @@ li a {
 	padding: 0 2em;
 }
 
-#title-screen {
+#title-screen, #game-over-text {
 	font-family: "Press Start 2P", cursive; sans-serif;
 	color: white;
 	line-height: 300%;
@@ -88,6 +88,10 @@ li a {
 	top: 0.5em;
 }
 
+#continue-text {
+	display: none;
+}
+
 .continue-text:hover {
 	color: #87ABB3;
 }
@@ -100,6 +104,10 @@ li a {
 	display: none;
 }
 
+#lancelot {
+
+}
+
 #lancelot-screen {
 	display: none;
 }
@@ -109,5 +117,21 @@ li a {
 }
 
 #timer {
+	display: none;
+	position: relative;
+	left: 4em;
+	top: 0.5em;
+	font-size: 2em;
+}
+
+#death-screen {
+	display: none;
+}
+
+#yaaa {
+	font-size: 2.5em;
+}
+
+#game-over-screen {
 	display: none;
 }
