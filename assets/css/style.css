@@ -104,11 +104,11 @@ li a {
 	display: none;
 }
 
-#lancelot-screen {
+#lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen {
 	display: none;
 }
 
-#lancelot:hover, #robin:hover {
+#name-choices li:hover, .quest-choices li:hover {
 	color: #87ABB3;	
 }
 

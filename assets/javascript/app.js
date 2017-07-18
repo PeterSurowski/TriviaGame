@@ -285,6 +285,53 @@ $('#robin').click(function() {
 	}, 3)
 })
 
+//If you click robin...
+$('#galahad').click(function() {
+	//Change value of lancelotClicked to true.
+	galahadClicked = true;
+	namesClicked++;
+	//Turns the click functionality off for #lancelot...
+	$('#galahad').off('click');
+	//And makes his name gray...
+	$('#galahad').css("color", "gray");
+	//Hide name-screen, death-screen and timer...
+	$('#name-screen').hide();
+	$('#death-screen').hide();
+	$('#name-timer').hide();
+	//Show the lancelot-quest screen
+	$('#galahad-screen').show();
+	//Print the whatQuest var to the what-quest element.
+	$(function () {
+		showText('#what-quest', whatQuest, 0, 5);
+	});
+	setTimeout(function() {
+		$(function () {
+			showText('#galahad-quest-a', questA, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#galahad-quest-b', questB, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#galahad-quest-c', questC, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#galahad-quest-d', questD, 0, 5)
+		})
+	}, 2);
+	//Start the timer.	
+	setTimeout(function() {
+		$('#galahad-timer').show();
+		myTimer = timer('#galahad-timer', 10, 1000);
+		myTimer;
+	}, 3)
+})
+
 //Death if you click quest a, b, or c.
 $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #robin-quest-b, #robin-quest-c, #galahad-quest-a, #galahad-quest-b, #galahad-quest-c, #arthur-quest-a, #arthur-quest-b, #arthur-quest-c').click(function() {
 	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
@@ -292,9 +339,8 @@ $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #rob
 	$('#death-screen').show();
 	//Stop timer
 	clearTimeout(myTimeout);
-	//Empty out the yaaa and continue-text-death(or else every time the timer runs out, it will add more text to the elements.)
-	$('#yaaa').text('');
-	$('#continue-text-death').text('');
+	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
+	$('#yaaa, #what-quest, #continue-text-death').text('');
 	// Print out yaaa into the #yaaa element.
 	$(function() {
 		showText('#yaaa', yaaa, 0, 5);
