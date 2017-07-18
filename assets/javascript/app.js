@@ -14,14 +14,16 @@ var lancelotClicked = false;
 var robinClicked =false;
 var galahadClicked = false;
 var arthurClicked = false;
-var questA = "To find Castle Anthrax!";
-var questB = "To push the pram a lot!";
-var questC = "To find migratory coconuts!";
-var questD = "To seek the Holy Grail!"
+var questA = "> To find Castle Anthrax!";
+var questB = "> To push the pram a lot!";
+var questC = "> To find migratory coconuts!";
+var questD = "> To seek the Holy Grail!"
 var namesClicked = 0;
 var noNameClicked = "You don't even know your own name? I blow my nose at you!"
 var gameOverText = "GAME OVER"
 var myTimeout;
+var offYouGoText = "Right! Off you go."
+var winText = "Some of you are not quite dead yet. Good work!"
 
 //Declare a function that will trigger the click sound.
 function clickSound() {
@@ -55,10 +57,7 @@ function timer(target, i, interval) {
 		}, interval);
 	} else {
 		// Hide name-screen, continue-text and timer, show the death screen.
-		$('#name-screen').hide();
-		$('#name-timer').hide();
-		$('#lancelot-timer').hide();
-		$('#lancelot-screen').hide();
+		$('#name-screen, #name-timer, #lancelot-timer, #lancelot-screen, #robin-timer, #robin-screen, #galahad-timer, #galahad-screen, #arthur-timer, #arthur-screen').hide();
 		$('#death-screen').show();
 		//Emplty out the yaaa and continue-text-death(or else every time the timer runs out, it will add more text to the elements.)
 		$('#yaaa').text('');
@@ -164,21 +163,26 @@ $('#continue-text-death').click(function() {
 		$('#death-screen').hide();
 		$('#lancelot-screen').hide();
 		$('#game-over-screen').show();
+		setTimeout(function() {
+			$(function() {
+				showText('#game-over-text', gameOverText, 0, 5);
+			});		
+		}, 3);
 		//If user never clicked a name they get a special message and game-over-text.
 		$(function() {
 			showText('#no-name-clicked', noNameClicked, 0, 5);
-		})
+		});
+	} 
+	//If all the names have already been clicked...
+	else if (namesClicked >= 4) {
+		//Hide the death-screen and show the game-over screen
+		$('#death-screen').hide();
+		$('#game-over-screen').show();
 		setTimeout(function() {
 			$(function() {
 				showText('#game-over-text', gameOverText, 0, 5);
 			})			
 		}, 3)
-	} 
-	//If all the names have already been clicked...
-	else if (lancelotClicked === true && robinClicked === true && galahadClicked === true && arthurClicked === true) {
-		//Hide the death-screen and show the game-over screen
-		$('#death-screen').hide();
-		$('#game-over-screen').show();
 		//Otherwise, just go back to the name screen.
 	} else {
 		//Hide the knights' screens and the death screen.
@@ -208,7 +212,7 @@ $('#lancelot').click(function() {
 	$('#lancelot-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('#what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 5);
 	});
 	setTimeout(function() {
 		$(function () {
@@ -255,7 +259,7 @@ $('#robin').click(function() {
 	$('#robin-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('#what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 5);
 	});
 	setTimeout(function() {
 		$(function () {
@@ -302,7 +306,7 @@ $('#galahad').click(function() {
 	$('#galahad-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('#what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 5);
 	});
 	setTimeout(function() {
 		$(function () {
@@ -349,7 +353,7 @@ $('#arthur').click(function() {
 	$('#arthur-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('#what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 5);
 	});
 	setTimeout(function() {
 		$(function () {
@@ -376,8 +380,8 @@ $('#arthur').click(function() {
 		$('#arthur-timer').show();
 		myTimer = timer('#arthur-timer', 10, 1000);
 		myTimer;
-	}, 3)
-})
+	}, 3);
+});
 
 //Death if you click quest a, b, or c.
 $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #robin-quest-b, #robin-quest-c, #galahad-quest-a, #galahad-quest-b, #galahad-quest-c, #arthur-quest-a, #arthur-quest-b, #arthur-quest-c').click(function() {
@@ -387,7 +391,7 @@ $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #rob
 	//Stop timer
 	clearTimeout(myTimeout);
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
-	$('#yaaa, #what-quest, #continue-text-death').text('');
+	$('#yaaa, .what-quest, #continue-text-death').text('');
 	// Print out yaaa into the #yaaa element.
 	$(function() {
 		showText('#yaaa', yaaa, 0, 5);
@@ -400,3 +404,48 @@ $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #rob
 	}, 3);
 });
 
+//If you're lancelot and click holy grail.
+$('#lancelot-quest-d, #robin-quest-d, #galahad-quest-d, #arthur-quest-d').click(function() {
+	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
+	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer').hide();
+	$('#off-you-go-screen').show();
+	//Stop timer.
+	clearTimeout(myTimeout);
+	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
+	$('#yaaa, .what-quest, #continue-text-death, #off-you-go-text, #continue-quest-three').text('');
+	//Write off-you-go-text to element.
+	$(function() {
+		showText('#off-you-go-text', offYouGoText, 0, 5);
+	});
+	//Wait a few seconds, then write continue text.
+	setTimeout(function() {
+		$(function () {
+			showText('#continue-text-three', continueText, 0, 5)
+		});
+	}, 3);
+});
+
+//Continue-text-three takes you back to the name screen.
+$('#continue-text-three').click(function() {
+	//Hide the off-you-go-screen.
+	$('#off-you-go-screen').hide();
+	//If all the names have already been clicked...
+	if (namesClicked >= 4) {
+		//Show the win-screen.
+		$('#win-screen').show();
+		setTimeout(function() {
+			$(function() {
+				showText('#win-text', winText, 0, 5);
+			})			
+		}, 3)
+		//Otherwise, just go back to the name screen.
+	} else {
+		//Hide the knights' screens and the death screen.
+		$('#death-screen').hide();
+		$('#off-you-go-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
+		$('#name-screen').show();
+		$('#name-timer').show();
+		myTimer = timer('#name-timer', 10, 1000);
+		myTimer;
+	}
+});
