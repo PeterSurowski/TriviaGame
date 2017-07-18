@@ -285,7 +285,7 @@ $('#robin').click(function() {
 	}, 3)
 })
 
-//If you click robin...
+//If you click galahad...
 $('#galahad').click(function() {
 	//Change value of lancelotClicked to true.
 	galahadClicked = true;
@@ -328,6 +328,53 @@ $('#galahad').click(function() {
 	setTimeout(function() {
 		$('#galahad-timer').show();
 		myTimer = timer('#galahad-timer', 10, 1000);
+		myTimer;
+	}, 3);
+});
+
+//If you click arthur...
+$('#arthur').click(function() {
+	//Change value of arthurClicked to true.
+	galahadClicked = true;
+	namesClicked++;
+	//Turns the click functionality off for #lancelot...
+	$('#arthur').off('click');
+	//And makes his name gray...
+	$('#arthur').css("color", "gray");
+	//Hide name-screen, death-screen and timer...
+	$('#name-screen').hide();
+	$('#death-screen').hide();
+	$('#name-timer').hide();
+	//Show the lancelot-quest screen
+	$('#arthur-screen').show();
+	//Print the whatQuest var to the what-quest element.
+	$(function () {
+		showText('#what-quest', whatQuest, 0, 5);
+	});
+	setTimeout(function() {
+		$(function () {
+			showText('#arthur-quest-a', questA, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#arthur-quest-b', questB, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#arthur-quest-c', questC, 0, 5)
+		})
+	}, 2);
+	setTimeout(function() {
+		$(function() {
+			showText('#arthur-quest-d', questD, 0, 5)
+		})
+	}, 2);
+	//Start the timer.	
+	setTimeout(function() {
+		$('#arthur-timer').show();
+		myTimer = timer('#arthur-timer', 10, 1000);
 		myTimer;
 	}, 3)
 })
