@@ -116,7 +116,7 @@ li a {
 	display: none;
 }
 
-#name-timer, #lancelot-timer, #robin-timer {
+#name-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer {
 	display: none;
 	position: relative;
 	left: 4em;
