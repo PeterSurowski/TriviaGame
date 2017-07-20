@@ -25,17 +25,14 @@ var myTimeout;
 var offYouGoText = "Right! Off you go."
 var winText = "Some of you are not quite dead yet. Good work!"
 
-//Declare a function that will trigger the click sound.
-function music() {
-	var object = document.createElement('audio');
-	object.src = "assets/sounds/lemcan.mid";
-	object.volume = .7;
-	object.autoPlay = false;
-	object.preLoad = true;
-	object.play();
-}
+//This var will play intermission music.
+var music = document.createElement('audio');
+music.src = "assets/sounds/music.mp3";
+music.volume = .8;
+music.autoPlay = false;
+music.preLoad = true;
 
-//This function plays cheesy intermission music.
+//Declare a function that will trigger the click sound.
 function clickSound() {
 	var object = document.createElement('audio');
 	object.src = "assets/sounds/click.wav";
@@ -296,8 +293,8 @@ $('#robin').click(function() {
 		$('#robin-timer').show();
 		myTimer = timer('#robin-timer', 10, 1000);
 		myTimer;
-	}, 3)
-})
+	}, 3);
+});
 
 //If you click galahad...
 $('#galahad').click(function() {
@@ -395,7 +392,7 @@ $('#arthur').click(function() {
 
 //Death if you click quest a, b, or c or quest or third choice screens.
 $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #robin-quest-b, #robin-quest-c, #galahad-quest-a, #galahad-quest-b, #galahad-quest-c, #arthur-quest-a, #arthur-quest-b, #arthur-quest-c, #lancelot-a, #lancelot-b, #lancelot-c, #robin-a, #robin-b, #robin-c, #galahad-a, #galahad-b, #galahad-c, #arthur-a, #arthur-b, #arthur-c').click(function() {
-	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen').hide();
+	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen, #lancelot-third-timer, #robin-third-timer, #galahad-third-timer, #arthur-third-timer').hide();
 	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer').hide();
 	$('#death-screen').show();
 	//Stop timer
@@ -639,88 +636,67 @@ $('#arthur-d').click(function() {
 	clearTimeout(myTimeout);
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
 	$('#yaaa, .what-quest, #continue-text-death, #off-you-go-text, #continue-quest-three').text('');
+	//Emply out the #arthur-win-pic element to start fresh.
+	$('#arthur-win-pic').html('');
 	//Put the first image into the element.
-	$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/falling1024X576.jpg">');
+	$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/OldManFromSceneTwentyFour1024X576.jpg">');
 	//Write last-words-a to element.
 	$(function() {
 		showText('#last-words-a', lastWordsA, 0, 5);
 	});
 	//setTimeout for a few seconds, then change image and print lastWordsB.
 	setTimeout(function() {
-		$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/falling1024X576">');
+		$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/falling1024X576.jpg">');
 		showText('#last-words-b', lastWordsB, 0, 5);
-	}, 15);
-	//Wait a few seconds, then show continue text three.
+	}, 4000);
+	//Wait a few seconds, then show continue text four.
 	setTimeout(function() {
 		$(function () {
 			showText('#continue-text-four', continueText, 0, 5)
 		});
-	}, 20);
-
-	//The final screen.
+	}, 5000);
+});
+//The final screen.
 $('#continue-text-four').click(function() {
-	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen').hide();
+	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen, #arthur-win-screen').hide();
 	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer, #lancelot-third-timer, #robin-third-timer, #galahad-third-timer, #arthur-third-timer').hide();
 	$('#bridge-screen').show();
 	//Declare vars for text
-	var finalWordsA = "As your party inches over the Bridge of Death, each board moans under their feet.";
-	var finalWordsB = "You're party crossed the bridge, and their not dead yet. They feel happy!"
+	var bridgeWordsA = "As your party inches over the Bridge of Death, each board moans under their feet.";
+	var bridgeWordsB = "You're party crossed the bridge, and their not dead yet. They feel happy!"
 	//Stop timer.
 	clearTimeout(myTimeout);
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
-	$('#yaaa, .what-quest, #continue-text-death, #off-you-go-text, #continue-quest-three').text('');
-	//Put the first image into the element.
-	$('#arthur-win-pic').html('<img id="bridge-pic" src="assets/images/bridge-crossing1024X576.jpg">');
+	$('#last-words-a, #last-words-b, #continue-text-four, #yaaa, .what-quest, #continue-text-death, #off-you-go-text, #continue-quest-three').text('');
+	//Put the image into the final-pic element.
+	$('#bridge-pic').html('<img id="bridge-pic" src="assets/images/bridge-crossing1024X576.jpg">');
 	//Write last-words-a to element.
 	$(function() {
-		showText('#bridge-words-a', finalWordsA, 0, 5);
+		showText('#bridge-words-a', bridgeWordsA, 0, 5);
 	});
-	//Continue coding here!
 	//Wait a few seconds, then change image and write last-words-b.
 	setTimeout(function() {
 		$('#bridge-screen').hide();
 		$('#intermission').show();
 		$('#intermission').html('<p>Intermission</p>');
-		music().play();
-	}, 5);
+		music.play();
+	}, 3000);
 	setTimeout(function() {
-		music().pause();
+		music.pause();
 		$('#intermission').hide();
 		$('#bridge-screen').show();
 		$(function() {
 			showText('#bridge-words-b', bridgeWordsB, 0, 5);
 		});
-	}, 1000);
+	}, 6000);
 	setTimeout(function() {
 		$('#bridge-screen').hide();
 		$('#game-over-screen').show();
-	})
+		$(function() {
+			showText('#game-over-text', gameOverText, 0, 5);
+		})
+	}, 9000);
 });
-
-	
-	//Wait a few seconds, then change image and write last-words-b.
-	setTimeout(function() {
-		music().pause();
-		$('#intermission').hide();
-		$('#arthur-win-pic').show();
-		$('#arthur-win-pic').html('');
-		$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/bridge-crossing1024X576.jpg">')
-		$(function () {
-			showText('#last-words-b', lastWordsB, 0, 5)
-		});
-	}, 10);
-	//Wait a few seconds, then show continue text three.
-	//MAYBE WE SHOULD CHANGE THIS!!!!!!!!!!!1
-	setTimeout(function() {
-		$(function () {
-			showText('#continue-text-four', continueText, 0, 5)
-		});
-	}, 3);
-});
-
-
-
-
 
 //Continue-text-three takes you back to the name screen.
 $('#continue-text-three').click(function() {
@@ -728,13 +704,22 @@ $('#continue-text-three').click(function() {
 	$('#off-you-go-screen').hide();
 	//If all the names have already been clicked...
 	if (namesClicked >= 4) {
-		//Show the win-screen.
-		$('#win-screen').show();
+		//Show the game-over-screen.
+		$('#bridge-screen').hide();
+		$('#game-over-screen').show();
+		//Emply text elements.
+		var emptyText = "";
+		$(function() {
+			showText('#no-name-clicked, #game-over-text', emptyText, 0, 0)
+		})
+		//Print out winText.
+		$(function() {
+			showText('#no-name-clicked', winText, 0, 5);
+		})
+		//Then print out game over.
 		setTimeout(function() {
-			$(function() {
-				showText('#win-text', winText, 0, 5);
-			})			
-		}, 3)
+			showText('#game-over-text', gameOverText, 0, 5);
+		}, 1000);		
 		//Otherwise, just go back to the name screen.
 	} else {
 		//Hide the knights' screens and the death screen.
