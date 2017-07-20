@@ -120,3 +120,14 @@ li a {
 	text-align: center;
 	padding: 2em;
 }
+
+#making-of {
+	position: relative;
+	background: rgba(0, 0, 0, 0.5);	
+	font-family: "Press Start 2P", cursive; sans-serif;
+	color: #E9DE5D;
+	max-width: 30%;
+	padding: 1.5em;
+	left: 30%;
+	
+}
