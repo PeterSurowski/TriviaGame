@@ -129,5 +129,31 @@ li a {
 	max-width: 30%;
 	padding: 1.5em;
 	left: 30%;
-	
+}
+
+#making-of h1 {
+	font-size: 2em;
+	font-family: "Press Start 2P", sans-serif;
+	margin: .5em;
+	text-align: center;
+	line-height: 1.5em
+}
+
+#making-of h2 {
+	margin: 1em;
+	font-family: "Press Start 2P";
+	text-shadow: 1px 1px black;
+	line-height: 110%;
+}
+
+#making-of p {
+	font-family: "Press Start 2P";	
+	margin: 1em;
+	text-shadow: 3px 1px black;
+	line-height: 150%;
+}
+
+#peter-pic {
+	padding: 0 1em;
+	width: 90%;
 }
