@@ -80,7 +80,7 @@ li a {
 	right-margin: 2em;
 }
 
-.text-box {
+.text-box, #off-you-go-text, #continue-text-three {
 	position: relative;
 	left: 2em;
 	top: 0.5em;
@@ -90,7 +90,7 @@ li a {
 	display: none;
 }
 
-#name-choices li:hover, .quest-choices li:hover, .third-choices li:hover, #continue-text-four {
+#name-choices li:hover, .quest-choices li:hover, .third-choices li:hover, #continue-text-four:hover {
 	color: #87ABB3;	
 }
 

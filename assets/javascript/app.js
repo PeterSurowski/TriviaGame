@@ -71,14 +71,14 @@ function timer(target, i, interval) {
 		$('#continue-text-death').text('');
 		// Print out yaaa into the #yaaa element.
 		$(function() {
-			showText('#yaaa', yaaa, 0, 5);
+			showText('#yaaa', yaaa, 0, 70);
 		});
 		// Wait three seconds, then show continue-text
 		setTimeout(function() {
 			$(function () {
-				showText('#continue-text-death', continueText, 0, 5)
+				showText('#continue-text-death', continueText, 0, 35)
 			});
-		}, 3)
+		}, 3000)
 	}
 }
 
@@ -91,14 +91,14 @@ $('#title-screen').click(function() {
 	$('#continue-text').show();
 	//Our showText function is invoked to print to intro-text element.		
 	$(function () {
-		showText('#intro-text', introText, 0, 5);
+		showText('#intro-text', introText, 0, 35);
 	});
 	//Then we wait eight seconds and print to the continue-text element.		
 	setTimeout(function() {
 		$(function () {
-			showText('.continue-text', continueText, 0, 5)
+			showText('.continue-text', continueText, 0, 35)
 		});
-	}, 8);
+	}, 6000);
 });
 
 // When continue-text is clicked...
@@ -111,14 +111,14 @@ $('#continue-text').click(function() {
 	$('.continue-text').text('');
 	//Slowly print the questionsThree variable to the #questions-three element.
 	$(function () {
-		showText('#questions-three', questionsThree, 0, 5);
+		showText('#questions-three', questionsThree, 0, 35);
 	});
 	//Then we wait six seconds and print to the continue-text element.		
 	setTimeout(function() {
 		$(function () {
-			showText('.continue-text', notAfraid, 0, 5)
+			showText('.continue-text', notAfraid, 0, 35)
 		});
-	}, 6);
+	}, 4500);
 });
 
 //When continue-text is clicked again...
@@ -131,36 +131,36 @@ $('#continue-text-two').click(function() {
 	$('#name-screen').show();
 	//Slowly print the what-name variable to the #whatName element.
 	$(function () {
-		showText('#what-name', whatName, 0, 5);
+		showText('#what-name', whatName, 0, 35);
 	});
 	//Then we wait two seconds and print to the choices.		
 	setTimeout(function() {
 		$(function () {
-			showText('#lancelot', firstName, 0, 5)
+			showText('#lancelot', firstName, 0, 35)
 		});
-	}, 2)
+	}, 1500)
 	setTimeout(function() {
 		$(function() {
-			showText('#robin', secondName, 0, 5)
+			showText('#robin', secondName, 0, 35)
 		});
-	}, 3)
+	}, 3000)
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad', thirdName, 0, 5)
+			showText('#galahad', thirdName, 0, 35)
 		});
-	}, 5)
+	}, 4500)
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur', fourthName, 0, 5)
+			showText('#arthur', fourthName, 0, 35)
 		});
-	}, 6)
+	}, 6000)
 	//Wait nine seconds, then show the timer...
 	setTimeout(function() {
 		$('#name-timer').show();
 		//And call the timer function...
 		myTimer = timer('#name-timer', 10, 1000);
 		myTimer;
-	}, 9)
+	}, 7500)
 });
 
 //If continue-text-death is clicked...
@@ -172,12 +172,12 @@ $('#continue-text-death').click(function() {
 		$('#game-over-screen').show();
 		setTimeout(function() {
 			$(function() {
-				showText('#game-over-text', gameOverText, 0, 5);
+				showText('#game-over-text', gameOverText, 0, 70);
 			});		
-		}, 3);
+		}, 3000);
 		//If user never clicked a name they get a special message and game-over-text.
 		$(function() {
-			showText('#no-name-clicked', noNameClicked, 0, 5);
+			showText('#no-name-clicked', noNameClicked, 0, 35);
 		});
 	} 
 	//If all the names have already been clicked...
@@ -187,7 +187,7 @@ $('#continue-text-death').click(function() {
 		$('#game-over-screen').show();
 		setTimeout(function() {
 			$(function() {
-				showText('#game-over-text', gameOverText, 0, 5);
+				showText('#game-over-text', gameOverText, 0, 70);
 			})			
 		}, 3)
 		//Otherwise, just go back to the name screen.
@@ -207,6 +207,7 @@ $('#lancelot').click(function() {
 	//Change value of lancelotClicked to true.
 	lancelotClicked = true;
 	namesClicked++;
+	clearTimeout(myTimeout);
 	//Turns the click functionality off for #lancelot...
 	$('#lancelot').off('click');
 	//And makes his name gray...
@@ -215,38 +216,40 @@ $('#lancelot').click(function() {
 	$('#name-screen').hide();
 	$('#death-screen').hide();
 	$('#name-timer').hide();
+	//Clear out .what-quest element
+	$('.what-quest').text('');
 	//Show the lancelot-quest screen
 	$('#lancelot-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('.what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 35);
 	});
 	setTimeout(function() {
 		$(function () {
-			showText('#lancelot-quest-a', questA, 0, 5)
+			showText('#lancelot-quest-a', questA, 0, 35)
 		})
-	}, 2);
+	}, 1500);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-quest-b', questB, 0, 5)
+			showText('#lancelot-quest-b', questB, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-quest-c', questC, 0, 5)
+			showText('#lancelot-quest-c', questC, 0, 35)
 		})
-	}, 2);
+	}, 4500);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-quest-d', questD, 0, 5)
+			showText('#lancelot-quest-d', questD, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#lancelot-timer').show();
 		myTimer = timer('#lancelot-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7500);
 });
 
 //If you click robin...
@@ -254,6 +257,7 @@ $('#robin').click(function() {
 	//Change value of lancelotClicked to true.
 	robinClicked = true;
 	namesClicked++;
+	clearTimeout(myTimeout);
 	//Turns the click functionality off for #lancelot...
 	$('#robin').off('click');
 	//And makes his name gray...
@@ -262,38 +266,40 @@ $('#robin').click(function() {
 	$('#name-screen').hide();
 	$('#death-screen').hide();
 	$('#name-timer').hide();
-	//Show the lancelot-quest screen
+	//Clear out .what-quest element
+	$('.what-quest').text('');
+	//Show the robin-quest screen
 	$('#robin-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('.what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 35);
 	});
 	setTimeout(function() {
 		$(function () {
-			showText('#robin-quest-a', questA, 0, 5)
+			showText('#robin-quest-a', questA, 0, 35)
 		})
-	}, 2);
+	}, 1500);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-quest-b', questB, 0, 5)
+			showText('#robin-quest-b', questB, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-quest-c', questC, 0, 5)
+			showText('#robin-quest-c', questC, 0, 35)
 		})
-	}, 2);
+	}, 4500);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-quest-d', questD, 0, 5)
+			showText('#robin-quest-d', questD, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#robin-timer').show();
 		myTimer = timer('#robin-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7500);
 });
 
 //If you click galahad...
@@ -301,6 +307,7 @@ $('#galahad').click(function() {
 	//Change value of lancelotClicked to true.
 	galahadClicked = true;
 	namesClicked++;
+	clearTimeout(myTimeout);
 	//Turns the click functionality off for #lancelot...
 	$('#galahad').off('click');
 	//And makes his name gray...
@@ -309,45 +316,48 @@ $('#galahad').click(function() {
 	$('#name-screen').hide();
 	$('#death-screen').hide();
 	$('#name-timer').hide();
+	//Clear out .what-quest element
+	$('.what-quest').text('');
 	//Show the lancelot-quest screen
 	$('#galahad-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('.what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 35);
 	});
 	setTimeout(function() {
 		$(function () {
-			showText('#galahad-quest-a', questA, 0, 5)
+			showText('#galahad-quest-a', questA, 0, 35)
 		})
-	}, 2);
+	}, 1500);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-quest-b', questB, 0, 5)
+			showText('#galahad-quest-b', questB, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-quest-c', questC, 0, 5)
+			showText('#galahad-quest-c', questC, 0, 35)
 		})
-	}, 2);
+	}, 4500);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-quest-d', questD, 0, 5)
+			showText('#galahad-quest-d', questD, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#galahad-timer').show();
 		myTimer = timer('#galahad-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7500);
 });
 
 //If you click arthur...
 $('#arthur').click(function() {
 	//Change value of arthurClicked to true.
-	galahadClicked = true;
+	arthurClicked = true;
 	namesClicked++;
+	clearTimeout(myTimeout);
 	//Turns the click functionality off for #lancelot...
 	$('#arthur').off('click');
 	//And makes his name gray...
@@ -356,38 +366,40 @@ $('#arthur').click(function() {
 	$('#name-screen').hide();
 	$('#death-screen').hide();
 	$('#name-timer').hide();
+	//Clear out .what-quest element
+	$('.what-quest').text('');
 	//Show the lancelot-quest screen
 	$('#arthur-screen').show();
 	//Print the whatQuest var to the what-quest element.
 	$(function () {
-		showText('.what-quest', whatQuest, 0, 5);
+		showText('.what-quest', whatQuest, 0, 35);
 	});
 	setTimeout(function() {
 		$(function () {
-			showText('#arthur-quest-a', questA, 0, 5)
+			showText('#arthur-quest-a', questA, 0, 35)
 		})
-	}, 2);
+	}, 1500);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-quest-b', questB, 0, 5)
+			showText('#arthur-quest-b', questB, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-quest-c', questC, 0, 5)
+			showText('#arthur-quest-c', questC, 0, 35)
 		})
-	}, 2);
+	}, 4500);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-quest-d', questD, 0, 5)
+			showText('#arthur-quest-d', questD, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#arthur-timer').show();
 		myTimer = timer('#arthur-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7500);
 });
 
 //Death if you click quest a, b, or c or quest or third choice screens.
@@ -401,24 +413,24 @@ $('#lancelot-quest-a, #lancelot-quest-b, #lancelot-quest-c, #robin-quest-a, #rob
 	$('#yaaa, .what-quest, #continue-text-death').text('');
 	// Print out yaaa into the #yaaa element.
 	$(function() {
-		showText('#yaaa', yaaa, 0, 5);
+		showText('#yaaa', yaaa, 0, 70);
 	});
 	// Wait three seconds, then show continue-text
 	setTimeout(function() {
 		$(function () {
-			showText('#continue-text-death', continueText, 0, 5)
+			showText('#continue-text-death', continueText, 0, 35)
 		});
-	}, 3);
+	}, 3500);
 });
 
 //If you are Lancelot and select the holy grail...
 $('#lancelot-quest-d').click(function() {
 	//Declare some vars to print.
-	var lancelotThirdQuestion = "What is your favorite color?"
-	var lancelotA = "> Red"
-	var lancelotB = "> Yellow"
-	var lancelotC = "> White"
-	var lancelotD = "> Blue"
+	var lancelotThirdQuestion = "What is your favorite color?";
+	var lancelotA = "> Red";
+	var lancelotB = "> Yellow";
+	var lancelotC = "> White";
+	var lancelotD = "> Blue";
 	// Hide previous screens.
 	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
 	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer').hide();
@@ -429,34 +441,34 @@ $('#lancelot-quest-d').click(function() {
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
 	$('#yaaa, .what-quest, #continue-text-death, #continue-text-three, #off-you-go-text, #continue-quest-three').text('');
 	$(function() {
-		showText('#lancelot-third-question', lancelotThirdQuestion, 0, 5)
+		showText('.lancelot-third-question', lancelotThirdQuestion, 0, 35)
 	});	
 	setTimeout(function() {
 		$(function () {
-			showText('#lancelot-a', lancelotA, 0, 5)
+			showText('#lancelot-a', lancelotA, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-b', lancelotB, 0, 5)
+			showText('#lancelot-b', lancelotB, 0, 35)
 		})
-	}, 2);
+	}, 4000);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-c', lancelotC, 0, 5)
+			showText('#lancelot-c', lancelotC, 0, 35)
 		})
-	}, 2);
+	}, 5000);
 	setTimeout(function() {
 		$(function() {
-			showText('#lancelot-d', lancelotD, 0, 5)
+			showText('#lancelot-d', lancelotD, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#lancelot-third-timer').show();
 		myTimer = timer('#lancelot-third-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7000);
 });
 
 //If you're robin and click the holy grail...
@@ -477,34 +489,34 @@ $('#robin-quest-d').click(function() {
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
 	$('#yaaa, .what-quest, #continue-text-death, #continue-text-three, #off-you-go-text, #continue-quest-three').text('');
 	$(function() {
-		showText('#robin-third-question', robinThirdQuestion, 0, 5)
+		showText('.robin-third-question', robinThirdQuestion, 0, 35)
 	});	
 	setTimeout(function() {
 		$(function () {
-			showText('#robin-a', robinA, 0, 5)
+			showText('#robin-a', robinA, 0, 35)
 		})
-	}, 2);
+	}, 3500);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-b', robinB, 0, 5)
+			showText('#robin-b', robinB, 0, 35)
 		})
-	}, 2);
+	}, 5000);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-c', robinC, 0, 5)
+			showText('#robin-c', robinC, 0, 35)
 		})
-	}, 2);
+	}, 6000);
 	setTimeout(function() {
 		$(function() {
-			showText('#robin-d', robinD, 0, 5)
+			showText('#robin-d', robinD, 0, 35)
 		})
-	}, 2);
+	}, 7000);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#robin-third-timer').show();
 		myTimer = timer('#robin-third-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 8000);
 });
 
 //If you're galahad and click the holy grail...
@@ -512,9 +524,9 @@ $('#galahad-quest-d').click(function() {
 	//Declare some vars to print.
 	var galahadThirdQuestion = "What is your favorite color?";
 	var galahadA = "> Blue. No! Wait!";
-	var galahadB = "> White";
-	var galahadC = "> Red";
-	var galahadD = "> Yellow";
+	var galahadB = "> White.";
+	var galahadC = "> Red.";
+	var galahadD = "> Yellow.";
 	// Hide previous screens.
 	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
 	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer').hide();
@@ -525,34 +537,34 @@ $('#galahad-quest-d').click(function() {
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
 	$('#yaaa, .what-quest, #continue-text-death, #continue-text-three, #off-you-go-text, #continue-quest-three').text('');
 	$(function() {
-		showText('#galahad-third-question', galahadThirdQuestion, 0, 5)
+		showText('.galahad-third-question', galahadThirdQuestion, 0, 35)
 	});	
 	setTimeout(function() {
 		$(function () {
-			showText('#galahad-a', galahadA, 0, 5)
+			showText('#galahad-a', galahadA, 0, 35)
 		})
-	}, 2);
+	}, 2500);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-b', galahadB, 0, 5)
+			showText('#galahad-b', galahadB, 0, 35)
 		})
-	}, 2);
+	}, 3500);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-c', galahadC, 0, 5)
+			showText('#galahad-c', galahadC, 0, 35)
 		})
-	}, 2);
+	}, 4500);
 	setTimeout(function() {
 		$(function() {
-			showText('#galahad-d', galahadD, 0, 5)
+			showText('#galahad-d', galahadD, 0, 35)
 		})
-	}, 2);
+	}, 5500);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#galahad-third-timer').show();
 		myTimer = timer('#galahad-third-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 6500);
 });
 
 //If you're arthur and click the holy grail...
@@ -561,7 +573,7 @@ $('#arthur-quest-d').click(function() {
 	var arthurThirdQuestion = "What is the air-speed velocity of an unladen swallow?";
 	var arthurA = "> They're non-migratory.";
 	var arthurB = "> Five. I mean, three.";
-	var arthurC = "> Faster than a cow in a catapult";
+	var arthurC = "> Faster than a cow in a catapult.";
 	var arthurD = "> African or European?";
 	// Hide previous screens.
 	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen').hide();
@@ -573,34 +585,34 @@ $('#arthur-quest-d').click(function() {
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
 	$('#yaaa, .what-quest, #continue-text-death, #continue-text-three, #off-you-go-text, #continue-quest-three').text('');
 	$(function() {
-		showText('.arthur-third-question', arthurThirdQuestion, 0, 5)
+		showText('.arthur-third-question', arthurThirdQuestion, 0, 35)
 	});	
 	setTimeout(function() {
 		$(function () {
-			showText('#arthur-a', arthurA, 0, 5)
+			showText('#arthur-a', arthurA, 0, 35)
 		})
-	}, 2);
+	}, 3000);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-b', arthurB, 0, 5)
+			showText('#arthur-b', arthurB, 0, 35)
 		})
-	}, 2);
+	}, 4000);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-c', arthurC, 0, 5)
+			showText('#arthur-c', arthurC, 0, 35)
 		})
-	}, 2);
+	}, 5000);
 	setTimeout(function() {
 		$(function() {
-			showText('#arthur-d', arthurD, 0, 5)
+			showText('#arthur-d', arthurD, 0, 35)
 		})
-	}, 2);
+	}, 6500);
 	//Start the timer.	
 	setTimeout(function() {
 		$('#arthur-third-timer').show();
 		myTimer = timer('#arthur-third-timer', 10, 1000);
 		myTimer;
-	}, 3);
+	}, 7500);
 });
 
 //If you're lancelot, robin or galahad and click choice d...
@@ -614,14 +626,14 @@ $('#lancelot-d, #robin-d, #galahad-d').click(function() {
 	$('#yaaa, .what-quest, #continue-text-death, #off-you-go-text, #continue-quest-three').text('');
 	//Write off-you-go-text to element.
 	$(function() {
-		showText('#off-you-go-text', offYouGoText, 0, 5);
+		showText('#off-you-go-text', offYouGoText, 0, 35);
 	});
 	//Wait a few seconds, then write continue text.
 	setTimeout(function() {
 		$(function () {
-			showText('#continue-text-three', continueText, 0, 5)
+			showText('#continue-text-three', continueText, 0, 35)
 		});
-	}, 3);
+	}, 2000);
 });
 
 //If you're arthur and click choice d...
@@ -642,28 +654,29 @@ $('#arthur-d').click(function() {
 	$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/OldManFromSceneTwentyFour1024X576.jpg">');
 	//Write last-words-a to element.
 	$(function() {
-		showText('#last-words-a', lastWordsA, 0, 5);
+		showText('#last-words-a', lastWordsA, 0, 35);
 	});
 	//setTimeout for a few seconds, then change image and print lastWordsB.
 	setTimeout(function() {
 		$('#arthur-win-pic').html('<img id="arthur-win-image" src="assets/images/falling1024X576.jpg">');
-		showText('#last-words-b', lastWordsB, 0, 5);
-	}, 4000);
+		showText('#last-words-b', lastWordsB, 0, 70);
+	}, 3000);
 	//Wait a few seconds, then show continue text four.
 	setTimeout(function() {
 		$(function () {
-			showText('#continue-text-four', continueText, 0, 5)
+			showText('#continue-text-four', continueText, 0, 35)
 		});
-	}, 5000);
+	}, 5500);
 });
+
 //The final screen.
 $('#continue-text-four').click(function() {
 	$('#quest-screen, #lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen, #arthur-win-screen').hide();
 	$('#quest-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer, #lancelot-third-timer, #robin-third-timer, #galahad-third-timer, #arthur-third-timer').hide();
 	$('#bridge-screen').show();
 	//Declare vars for text
-	var bridgeWordsA = "As your party inches over the Bridge of Death, each board moans under their feet.";
-	var bridgeWordsB = "You're party crossed the bridge, and their not dead yet. They feel happy!"
+	var bridgeWordsA = "As your party inches over the Bridge of Death, each board moans under their feet. They struggle for dear life as the rope slowly unravels...";
+	var bridgeWordsB = "You're party crossed the bridge. They're not dead yet!"
 	//Stop timer.
 	clearTimeout(myTimeout);
 	//Empty out several text elements (or else every time the timer runs out, it will add more text to the elements.)
@@ -672,7 +685,7 @@ $('#continue-text-four').click(function() {
 	$('#bridge-pic').html('<img id="bridge-pic" src="assets/images/bridge-crossing1024X576.jpg">');
 	//Write last-words-a to element.
 	$(function() {
-		showText('#bridge-words-a', bridgeWordsA, 0, 5);
+		showText('#bridge-words-a', bridgeWordsA, 0, 35);
 	});
 	//Wait a few seconds, then change image and write last-words-b.
 	setTimeout(function() {
@@ -680,22 +693,22 @@ $('#continue-text-four').click(function() {
 		$('#intermission').show();
 		$('#intermission').html('<p>Intermission</p>');
 		music.play();
-	}, 3000);
+	}, 5000);
 	setTimeout(function() {
 		music.pause();
 		$('#intermission').hide();
 		$('#bridge-screen').show();
 		$(function() {
-			showText('#bridge-words-b', bridgeWordsB, 0, 5);
+			showText('#bridge-words-b', bridgeWordsB, 0, 35);
 		});
-	}, 6000);
+	}, 10000);
 	setTimeout(function() {
 		$('#bridge-screen').hide();
 		$('#game-over-screen').show();
 		$(function() {
-			showText('#game-over-text', gameOverText, 0, 5);
+			showText('#game-over-text', gameOverText, 0, 70);
 		})
-	}, 9000);
+	}, 16000);
 });
 
 //Continue-text-three takes you back to the name screen.
@@ -705,21 +718,25 @@ $('#continue-text-three').click(function() {
 	//If all the names have already been clicked...
 	if (namesClicked >= 4) {
 		//Show the game-over-screen.
-		$('#bridge-screen').hide();
+		$('#bridge-screen, #new-game').hide();
 		$('#game-over-screen').show();
 		//Emply text elements.
 		var emptyText = "";
 		$(function() {
-			showText('#no-name-clicked, #game-over-text', emptyText, 0, 0)
+			showText('#no-name-clicked, #game-over-text', emptyText, 0, 35)
 		})
 		//Print out winText.
 		$(function() {
-			showText('#no-name-clicked', winText, 0, 5);
+			showText('#no-name-clicked', winText, 0, 35);
 		})
 		//Then print out game over.
 		setTimeout(function() {
-			showText('#game-over-text', gameOverText, 0, 5);
-		}, 1000);		
+			showText('#game-over-text', gameOverText, 0, 70);
+		}, 2500);
+		setTimeout(function() {
+			$('#new-game').show();
+		}, 4000)
+		//Wait another second, then show new-game.	
 		//Otherwise, just go back to the name screen.
 	} else {
 		//Hide the knights' screens and the death screen.
