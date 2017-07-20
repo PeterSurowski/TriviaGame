@@ -84,15 +84,15 @@ li a {
 	top: 0.5em;
 }
 
-#lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #intro-screen, #continue-text, #stop-screen, #name-screen, #death-screen, #game-over-screen, #off-you-go-screen, #win-screen {
+#lancelot-screen, #robin-screen, #galahad-screen, #arthur-screen, #intro-screen, #continue-text, #stop-screen, #name-screen, #lancelot-third-screen, #robin-third-screen, #galahad-third-screen, #arthur-third-screen, #death-screen, #game-over-screen, #off-you-go-screen, #win-screen {
 	display: none;
 }
 
-#name-choices li:hover, .quest-choices li:hover {
+#name-choices li:hover, .quest-choices li:hover, .third-choices li:hover, #continue-text-four {
 	color: #87ABB3;	
 }
 
-#name-timer, #lancelot-timer, #robin-timer, #galahad-timer, #arthur-timer {
+#name-timer, #lancelot-timer, #lancelot-third-timer, #robin-timer, #robin-third-timer, #galahad-timer, #galahad-third-timer, #arthur-timer, #arthur-third-timer {
 	display: none;
 	position: relative;
 	left: 4em;
@@ -104,4 +104,14 @@ li a {
 
 #yaaa {
 	font-size: 2.5em;
+}
+
+#intermission {
+	display: none;
+	background: #ff69b4;
+	color: yellow;
+	position: absolute;
+	width: 100%;
+	font-family: "Press Start 2P", cursive; sans-serif;
+	font-size: 2em;
 }
